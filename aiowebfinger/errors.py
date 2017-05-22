@@ -1,0 +1,2 @@
+class WebFingerException(Exception):
+    pass

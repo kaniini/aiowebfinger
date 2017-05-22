@@ -1,0 +1,36 @@
+{
+    "subject": "acct:kaniini@mastodon.dereferenced.org",
+    "aliases": [
+        "https://mastodon.dereferenced.org/@kaniini",
+        "https://mastodon.dereferenced.org/users/kaniini"
+    ],
+    "links": [
+        {
+            "rel": "http://webfinger.net/rel/profile-page",
+            "type": "text/html",
+            "href": "https://mastodon.dereferenced.org/@kaniini"
+        },
+        {
+            "rel": "http://schemas.google.com/g/2010#updates-from",
+            "type": "application/atom+xml",
+            "href": "https://mastodon.dereferenced.org/users/kaniini.atom"
+        },
+        {
+            "rel": "self",
+            "type": "application/activity+json",
+            "href": "https://mastodon.dereferenced.org/@kaniini"
+        },
+        {
+            "rel": "salmon",
+            "href": "https://mastodon.dereferenced.org/api/salmon/1"
+        },
+        {
+            "rel": "magic-public-key",
+            "href": "data:application/magic-public-key,RSA.yoJG8LC8BnYK48c2wwBUf0lt88R9DK3ywW9110z0iOt7FYpWGCmEUrvPcW0XnU7ohVND-ZUQUfPHP8vtHlyx00XmK5LwCtQ548TUCIwe8hOZdSfsCW6tqRz-1YRxUeboNR_-Pg4zdQH0k_6HfO225b4xSL9PhOwyh26Jwzm8tks4XS6hi3C4XPUjmyc9Hvg-la3DgzK-BibRFlopu3eAL9qvSeVd9TojfQmPFnlimiHh-38OhI4drtk7fu8VUXGC2vE-LcqrLz7QN2qsFHLp8b269CCHcZ5jqDcfrBLCIwG6K5XnNwSN2Pj041kzVPfDtUvFUPgxstxOK6ZrycfyeQ==.AQAB"
+        },
+        {
+            "rel": "http://ostatus.org/schema/1.0/subscribe",
+            "template": "https://mastodon.dereferenced.org/authorize_follow?acct={uri}"
+        }
+    ]
+}
