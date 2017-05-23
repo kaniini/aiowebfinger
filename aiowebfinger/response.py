@@ -30,6 +30,9 @@ class CommonResponse:
     def __init__(self):
         self.invlinks = {l['rel']: l for l in self.links if 'rel' in l}
 
+    def __repr__(self):
+        return '%s(subject=%r, aliases=%r, properties=%r, links=%r)' % (self.__class__.__name__, self.subject, self.aliases, self.properties, self.links)
+
     def rel(self, relation: str, attr: str='href') -> str:
         if relation not in self.invlinks:
             return
