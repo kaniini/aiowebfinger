@@ -1,6 +1,5 @@
 import asyncio
 import aiohttp
-import aiohttp.client_exceptions
 import xml.etree.ElementTree as etree
 
 from aiowebfinger import __version__
@@ -53,5 +52,5 @@ class WebFingerClient:
                         return XRDResponse(et)
 
                     return JRDResponse((await resp.json(content_type=ctype)))
-        except aiohttp.client_exceptions.ClientError as exc:
+        except aiohttp.ClientError as exc:
             raise HTTPClientError(exc)
