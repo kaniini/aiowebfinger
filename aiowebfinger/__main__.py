@@ -15,6 +15,10 @@ FINGER_RELS = ['subject'] + [k for k in RELS.keys()]
 async def finger(client, resource):
     try:
         resp = await client.finger(resource)
+        if not resp:
+            print('---', '%s:' % resource, 'not found')
+            print()
+            return
     except WebFingerException as exc:
         print('---', '%s:' % resource, repr(exc))
         print()
