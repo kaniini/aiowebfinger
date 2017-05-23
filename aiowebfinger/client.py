@@ -1,10 +1,15 @@
 import asyncio
 import aiohttp
+import aiohttp.client_exceptions
 import xml.etree.ElementTree as etree
 
 from aiowebfinger import __version__
 from aiowebfinger.errors import WebFingerException
 from aiowebfinger.response import JRDResponse, XRDResponse
+
+
+class HTTPClientError(WebFingerException):
+    pass
 
 
 class MalformedResourceError(WebFingerException):
@@ -36,14 +41,17 @@ class WebFingerClient:
         if rel:
             params['rel'] = rel
 
-        resp = await aiohttp.get(uri, headers=headers, params=params)
-        if not resp or resp.status != 200:
-            return
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(uri, headers=headers, params=params) as resp:
+                    if resp.status != 200:
+                        return
 
-        ctype = resp.headers.get('Content-Type', 'application/xml')
-        if 'application/xml' in ctype:
-            et = etree.XML((await resp.text()))
-            return XRDResponse(et)
+                    ctype = resp.headers.get('Content-Type', 'application/xml')
+                    if 'application/xml' in ctype:
+                        et = etree.XML((await resp.text()))
+                        return XRDResponse(et)
 
-        return JRDResponse((await resp.json()))
-
+                    return JRDResponse((await resp.json(content_type=ctype)))
+        except aiohttp.client_exceptions.ClientError as exc:
+            raise HTTPClientError(exc)
